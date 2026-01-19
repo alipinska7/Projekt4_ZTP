@@ -133,3 +133,45 @@ def count_daily_avg(df):
 
 
 
+#zadanie 5
+def voivodeship_above_norm_sum(df_meta, final_df):
+    # tablica z województwami i kodami stacji
+    voivodeship = df_meta[["Kod stacji", "Województwo"]]
+    voivodeship = voivodeship.dropna()
+    voivodeship.drop_duplicates(inplace=True)
+# kod zaporzyczony z funkcji obliczenia.count_daily_avg()
+    # Filtrowanie danych
+    df= filter_data(final_df)
+    final_df['czas'] = pd.to_datetime(final_df['czas'])
+
+    # Tabela dobowych stężeń dla wszystkich stacji wynikająca z jednostkowych pomiarów.
+    daily_avg = (df.groupby(['stacja', 'rok', 'miejscowość',df['czas'].dt.date])['wartość'].mean().reset_index() .rename(columns={'czas': 'data', 'wartość': 'pm25_dobowe'}) )
+
+    #połaczenie df z pomiarami z nazwami województw
+    df_with_voivodeship = daily_avg.merge(voivodeship, left_on='stacja', right_on='Kod stacji', how='left')
+    # usunięcie niepotrzebnych kolumn
+    df_with_voivodeship.drop(columns=['Kod stacji'], inplace=True)
+
+    # Tablica binarna stwierdzająca, czy zmierzone stężenia PM2.5 przekraczały dobową normę
+    df_with_voivodeship['przekroczenie'] = ((df_with_voivodeship['pm25_dobowe'] > 15).astype(int))
+
+    # Tabela sumująca ilość wykroczeń dla każdej stacji względem lat danych lat
+    exceedances = (df_with_voivodeship.groupby(['stacja', 'rok', 'miejscowość','Województwo'])['przekroczenie'].sum().reset_index().rename(columns={'przekroczenie': 'ilość przekroczeń'}))
+
+    # Sumowanie przekroczeń dla województw i lat
+    voivodeship_summary = exceedances.groupby(['Województwo', 'rok'])['ilość przekroczeń'].sum().reset_index()
+
+    # Sortowanie dla lepszej czytelności
+    voivodeship_summary = voivodeship_summary.sort_values(by=['Województwo', 'rok'])
+
+    # Przekształcenie tabeli: Województwa w wierszach, lata w kolumnach
+    voivodeship_summary = voivodeship_summary.pivot_table(
+    index='Województwo',
+    columns='rok',
+    values='ilość przekroczeń',
+    aggfunc='sum')
+
+    return voivodeship_summary
+
+if __name__ == "__main__":
+    pass

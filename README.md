@@ -5,8 +5,20 @@ Projekt dotyczy analizy danych zanieczyszczeń powietrza PM2.5 w Polsce. Projekt
 3. Przeprowadzenie odpowiednich obliczeń do późniejszych wizualizacji
 4. Generowanie wykresów przedstawiających różne zależności
 
-Do poprawnego działania projektu potrzebne są biblioteki: pandas, requests, zipfile, io, seabor, matplotlib.pyplot.
+## Jak zainstalować i uruchomić projekt
+1. Sklonuj repozytorium
+```python
 
+```
+2. Utwórz wirtualne środowisko
+```python
+python -m venv venv
+source ./venv/bin/activate
+```
+3. Zainstaluj potrzebne biblioteki
+```python
+pip install -r requirements.txt
+```
 
 ## Moduł czyszczenie_danych
 Służy do:

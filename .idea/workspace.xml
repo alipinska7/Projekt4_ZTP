@@ -4,11 +4,9 @@
     <list default="true" id="0fdf8197-0401-4f3e-8578-42109c3b7512" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Uruchamianie-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Uruchamianie-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Uruchamianie.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Uruchamianie.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/czyszczenie_danych.py" beforeDir="false" afterPath="$PROJECT_DIR$/czyszczenie_danych.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obliczenia.py" beforeDir="false" afterPath="$PROJECT_DIR$/obliczenia.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wczytywanie.py" beforeDir="false" afterPath="$PROJECT_DIR$/wczytywanie.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wykresy.py" beforeDir="false" afterPath="$PROJECT_DIR$/wykresy.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,6 +69,9 @@
       <workItem from="1768665868148" duration="7517000" />
       <workItem from="1768727330166" duration="3387000" />
       <workItem from="1768731461808" duration="136000" />
+      <workItem from="1768839982894" duration="2201000" />
+      <workItem from="1768842292168" duration="1325000" />
+      <workItem from="1768844286021" duration="2000" />
     </task>
     <servers />
   </component>

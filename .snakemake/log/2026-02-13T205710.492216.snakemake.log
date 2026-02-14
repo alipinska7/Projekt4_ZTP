@@ -1,0 +1,61 @@
+Assuming unrestricted shared filesystem usage.
+host: student-workstation
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                count
+---------------  -------
+all                    1
+analyze_pm25           2
+clean_pm25_year        2
+download_pm25          1
+pubmed_year            1
+report_task4           1
+total                  8
+
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Feb 13 20:57:11 2026]
+localrule clean_pm25_year:
+    input: data/raw/pm25_2021.pkl, src/czyszczenie_danych.py
+    output: data/processed/pm25_2021_cleaned.pkl
+    jobid: 2
+    reason: Missing output files: data/processed/pm25_2021_cleaned.pkl
+    wildcards: year=2021
+    resources: tmpdir=/tmp
+Shell command: 
+        python src/czyszczenie_danych.py             --input data/raw/pm25_2021.pkl             --year 2021             --output data/processed/pm25_2021_cleaned.pkl             --cities Warszawa Katowice
+        
+RuleException:
+CalledProcessError in file "/home/ania/Desktop/Projekt3_ZTP/Snakefile", line 35:
+Command 'set -euo pipefail;  
+        python src/czyszczenie_danych.py             --input data/raw/pm25_2021.pkl             --year 2021             --output data/processed/pm25_2021_cleaned.pkl             --cities Warszawa Katowice' returned non-zero exit status 2.
+[Fri Feb 13 20:57:12 2026]
+Error in rule clean_pm25_year:
+    message: None
+    jobid: 2
+    input: data/raw/pm25_2021.pkl, src/czyszczenie_danych.py
+    output: data/processed/pm25_2021_cleaned.pkl
+    shell:
+        
+        python src/czyszczenie_danych.py             --input data/raw/pm25_2021.pkl             --year 2021             --output data/processed/pm25_2021_cleaned.pkl             --cities Warszawa Katowice
+        
+        (command exited with non-zero exit code)
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Fri Feb 13 20:57:12 2026]
+Error in rule clean_pm25_year:
+    message: None
+    jobid: 2
+    input: data/raw/pm25_2021.pkl, src/czyszczenie_danych.py
+    output: data/processed/pm25_2021_cleaned.pkl
+    shell:
+        
+        python src/czyszczenie_danych.py             --input data/raw/pm25_2021.pkl             --year 2021             --output data/processed/pm25_2021_cleaned.pkl             --cities Warszawa Katowice
+        
+        (command exited with non-zero exit code)
+Complete log(s): /home/ania/Desktop/Projekt3_ZTP/.snakemake/log/2026-02-13T205710.492216.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

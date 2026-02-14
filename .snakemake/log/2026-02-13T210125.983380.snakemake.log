@@ -1,0 +1,77 @@
+Assuming unrestricted shared filesystem usage.
+host: student-workstation
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                count
+---------------  -------
+all                    1
+analyze_pm25           2
+clean_pm25_year        2
+download_pm25          1
+pubmed_year            1
+report_task4           1
+total                  8
+
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Feb 13 21:01:26 2026]
+localrule clean_pm25_year:
+    input: data/raw/pm25_2021.pkl, src/czyszczenie_danych.py
+    output: data/processed/pm25_2021_cleaned.pkl
+    jobid: 2
+    reason: Missing output files: data/processed/pm25_2021_cleaned.pkl
+    wildcards: year=2021
+    resources: tmpdir=/tmp
+Shell command: 
+        python src/czyszczenie_danych.py             --input data/raw/pm25_2021.pkl             --year 2021             --output data/processed/pm25_2021_cleaned.pkl         
+Select jobs to execute...
+[Fri Feb 13 21:01:35 2026]
+Finished jobid: 2 (Rule: clean_pm25_year)
+1 of 8 steps (12%) done
+Execute 1 jobs...
+[Fri Feb 13 21:01:35 2026]
+localrule analyze_pm25:
+    input: data/processed/pm25_2021_cleaned.pkl
+    output: results/pm25/2021/daily_means.csv, results/pm25/2021/exceedance_days.csv
+    jobid: 1
+    reason: Missing output files: results/pm25/2021/exceedance_days.csv; Input files updated by another job: data/processed/pm25_2021_cleaned.pkl
+    wildcards: year=2021
+    resources: tmpdir=/tmp
+Shell command: 
+        python src/analiza_danych.py             --year 2021             --input_file data/processed/pm25_2021_cleaned.pkl             --output_dir results/analysis/2021             --cities Warszawa Katowice
+        
+Select jobs to execute...
+RuleException:
+CalledProcessError in file "/home/ania/Desktop/Projekt3_ZTP/Snakefile", line 105:
+Command 'set -euo pipefail;  
+        python src/analiza_danych.py             --year 2021             --input_file data/processed/pm25_2021_cleaned.pkl             --output_dir results/analysis/2021             --cities Warszawa Katowice' returned non-zero exit status 2.
+[Fri Feb 13 21:01:35 2026]
+Error in rule analyze_pm25:
+    message: None
+    jobid: 1
+    input: data/processed/pm25_2021_cleaned.pkl
+    output: results/pm25/2021/daily_means.csv, results/pm25/2021/exceedance_days.csv
+    shell:
+        
+        python src/analiza_danych.py             --year 2021             --input_file data/processed/pm25_2021_cleaned.pkl             --output_dir results/analysis/2021             --cities Warszawa Katowice
+        
+        (command exited with non-zero exit code)
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Fri Feb 13 21:01:35 2026]
+Error in rule analyze_pm25:
+    message: None
+    jobid: 1
+    input: data/processed/pm25_2021_cleaned.pkl
+    output: results/pm25/2021/daily_means.csv, results/pm25/2021/exceedance_days.csv
+    shell:
+        
+        python src/analiza_danych.py             --year 2021             --input_file data/processed/pm25_2021_cleaned.pkl             --output_dir results/analysis/2021             --cities Warszawa Katowice
+        
+        (command exited with non-zero exit code)
+Complete log(s): /home/ania/Desktop/Projekt3_ZTP/.snakemake/log/2026-02-13T210125.983380.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

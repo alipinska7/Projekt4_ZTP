@@ -1,0 +1,55 @@
+Assuming unrestricted shared filesystem usage.
+host: student-workstation
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                count
+---------------  -------
+all                    1
+analyze_pm25           2
+clean_pm25_year        2
+pubmed_year            2
+report_task4           1
+total                  8
+
+Select jobs to execute...
+Execute 1 jobs...
+[Sat Feb 14 01:13:12 2026]
+localrule pubmed_year:
+    input: src/literature/pubmed_fetch.py
+    output: results/literature/2024/pubmed_papers.csv, results/literature/2024/summary_by_year.csv, results/literature/2024/top_journals.csv, results/literature/2024/papers_per_year.png
+    jobid: 8
+    reason: Updated input files: src/literature/pubmed_fetch.py
+    wildcards: year=2024
+    resources: tmpdir=/tmp
+Select jobs to execute...
+RuleException:
+CalledProcessError in file "/home/ania/Desktop/Projekt3_ZTP/Snakefile", line 96:
+Command 'set -euo pipefail;  python src/literature/pubmed_fetch.py --year 2024 --config config/task4.yaml --output_dir results/literature/2024' returned non-zero exit status 1.
+[Sat Feb 14 01:13:28 2026]
+Error in rule pubmed_year:
+    message: None
+    jobid: 8
+    input: src/literature/pubmed_fetch.py
+    output: results/literature/2024/pubmed_papers.csv, results/literature/2024/summary_by_year.csv, results/literature/2024/top_journals.csv, results/literature/2024/papers_per_year.png
+    shell:
+        python src/literature/pubmed_fetch.py --year 2024 --config config/task4.yaml --output_dir results/literature/2024
+        (command exited with non-zero exit code)
+Removing output files of failed job pubmed_year since they might be corrupted:
+results/literature/2024/pubmed_papers.csv, results/literature/2024/summary_by_year.csv, results/literature/2024/top_journals.csv
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Sat Feb 14 01:13:28 2026]
+Error in rule pubmed_year:
+    message: None
+    jobid: 8
+    input: src/literature/pubmed_fetch.py
+    output: results/literature/2024/pubmed_papers.csv, results/literature/2024/summary_by_year.csv, results/literature/2024/top_journals.csv, results/literature/2024/papers_per_year.png
+    shell:
+        python src/literature/pubmed_fetch.py --year 2024 --config config/task4.yaml --output_dir results/literature/2024
+        (command exited with non-zero exit code)
+Complete log(s): /home/ania/Desktop/Projekt3_ZTP/.snakemake/log/2026-02-14T011312.326320.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

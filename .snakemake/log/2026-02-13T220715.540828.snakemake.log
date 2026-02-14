@@ -1,0 +1,77 @@
+Assuming unrestricted shared filesystem usage.
+host: student-workstation
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+all                 1
+pubmed_year         3
+report_task4        1
+total               5
+
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Feb 13 22:07:15 2026]
+localrule pubmed_year:
+    input: src/literature/pubmed_fetch.py
+    output: results/literature/2010/pubmed_papers.csv, results/literature/2010/summary_by_year.csv, results/literature/2010/top_journals.csv, results/literature/2010/query_stats.csv
+    jobid: 12
+    reason: Forced execution
+    wildcards: year=2010
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Fri Feb 13 22:07:21 2026]
+Finished jobid: 12 (Rule: pubmed_year)
+1 of 5 steps (20%) done
+Execute 1 jobs...
+[Fri Feb 13 22:07:21 2026]
+localrule pubmed_year:
+    input: src/literature/pubmed_fetch.py
+    output: results/literature/2021/pubmed_papers.csv, results/literature/2021/summary_by_year.csv, results/literature/2021/top_journals.csv, results/literature/2021/query_stats.csv
+    jobid: 10
+    reason: Forced execution
+    wildcards: year=2021
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Fri Feb 13 22:07:32 2026]
+Finished jobid: 10 (Rule: pubmed_year)
+2 of 5 steps (40%) done
+Execute 1 jobs...
+[Fri Feb 13 22:07:32 2026]
+localrule pubmed_year:
+    input: src/literature/pubmed_fetch.py
+    output: results/literature/2024/pubmed_papers.csv, results/literature/2024/summary_by_year.csv, results/literature/2024/top_journals.csv, results/literature/2024/query_stats.csv
+    jobid: 11
+    reason: Forced execution
+    wildcards: year=2024
+    resources: tmpdir=/tmp
+[Fri Feb 13 22:07:43 2026]
+Finished jobid: 11 (Rule: pubmed_year)
+3 of 5 steps (60%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Feb 13 22:07:43 2026]
+localrule report_task4:
+    input: results/pm25/2021/exceedance_days.csv, results/pm25/2024/exceedance_days.csv, results/pm25/2010/exceedance_days.csv, results/literature/2021/pubmed_papers.csv, results/literature/2024/pubmed_papers.csv, results/literature/2010/pubmed_papers.csv
+    output: results/report_task4.md
+    jobid: 13
+    reason: Input files updated by another job: results/literature/2024/pubmed_papers.csv, results/literature/2010/pubmed_papers.csv, results/literature/2021/pubmed_papers.csv
+    resources: tmpdir=/tmp
+[Fri Feb 13 22:07:44 2026]
+Finished jobid: 13 (Rule: report_task4)
+4 of 5 steps (80%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Feb 13 22:07:44 2026]
+localrule all:
+    input: results/pm25/2021/exceedance_days.csv, results/pm25/2024/exceedance_days.csv, results/pm25/2010/exceedance_days.csv, results/literature/2021/pubmed_papers.csv, results/literature/2024/pubmed_papers.csv, results/literature/2010/pubmed_papers.csv, results/report_task4.md
+    jobid: 0
+    reason: Input files updated by another job: results/report_task4.md, results/literature/2024/pubmed_papers.csv, results/literature/2010/pubmed_papers.csv, results/literature/2021/pubmed_papers.csv
+    resources: tmpdir=/tmp
+[Fri Feb 13 22:07:44 2026]
+Finished jobid: 0 (Rule: all)
+5 of 5 steps (100%) done
+Complete log(s): /home/ania/Desktop/Projekt3_ZTP/.snakemake/log/2026-02-13T220715.540828.snakemake.log

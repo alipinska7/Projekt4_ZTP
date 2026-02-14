@@ -1,0 +1,23 @@
+years: [2019, 2024]
+
+cities:
+  - "Warszawa"
+  - "Katowice"
+
+#wyniki, dla alternatywnych nazw miast
+city_aliases:
+  Warszawa: ["Warsaw", "Warszawa"]
+  Katowice: ["Katowice"]
+
+#możliwość zmiany zdrowotnej normy PM2.5 (WHO może wyznaczyć inną normę)
+pm25:
+  norm_limit: 15
+
+pubmed:
+  entrez_email: ak.lipinska2@student.uw.edu.pl
+  queries:
+    - '"PM2.5"[TIAB]'
+    - '"fine particulate matter"[TIAB]' #inny termin określający PM2.5
+  retmax: 50 #ograniczenie wyników z wyszukiwania
+
+#[TIAB] - szuka podanej frazy tylko w tytule/abstrakcie

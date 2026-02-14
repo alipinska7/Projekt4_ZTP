@@ -1,0 +1,68 @@
+Assuming unrestricted shared filesystem usage.
+host: student-workstation
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+all                 1
+analyze_pm25        2
+report_task4        1
+total               4
+
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Feb 13 21:20:31 2026]
+localrule analyze_pm25:
+    input: data/processed/pm25_2021_cleaned.pkl, src/obliczenia.py, config/task4.yaml
+    output: results/pm25/2021/exceedance_days.csv, results/pm25/2021/daily_means.csv
+    jobid: 1
+    reason: Updated input files: src/obliczenia.py
+    wildcards: year=2021
+    resources: tmpdir=/tmp
+Shell command: None
+Select jobs to execute...
+[Fri Feb 13 21:20:33 2026]
+Finished jobid: 1 (Rule: analyze_pm25)
+1 of 4 steps (25%) done
+Execute 1 jobs...
+[Fri Feb 13 21:20:33 2026]
+localrule analyze_pm25:
+    input: data/processed/pm25_2024_cleaned.pkl, src/obliczenia.py, config/task4.yaml
+    output: results/pm25/2024/exceedance_days.csv, results/pm25/2024/daily_means.csv
+    jobid: 4
+    reason: Updated input files: src/obliczenia.py
+    wildcards: year=2024
+    resources: tmpdir=/tmp
+Shell command: None
+[Fri Feb 13 21:20:36 2026]
+Finished jobid: 4 (Rule: analyze_pm25)
+2 of 4 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Feb 13 21:20:36 2026]
+localrule report_task4:
+    input: results/pm25/2021/exceedance_days.csv, results/pm25/2024/exceedance_days.csv, results/literature/2021/pubmed_papers.csv, results/literature/2024/pubmed_papers.csv
+    output: results/report_task4.md
+    jobid: 9
+    reason: Input files updated by another job: results/pm25/2021/exceedance_days.csv, results/pm25/2024/exceedance_days.csv
+    resources: tmpdir=/tmp
+Shell command: python src/generate_report.py --output results/report_task4.md
+[Fri Feb 13 21:20:36 2026]
+Finished jobid: 9 (Rule: report_task4)
+3 of 4 steps (75%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Feb 13 21:20:36 2026]
+localrule all:
+    input: results/pm25/2021/exceedance_days.csv, results/pm25/2024/exceedance_days.csv, results/literature/2021/pubmed_papers.csv, results/literature/2024/pubmed_papers.csv, results/report_task4.md
+    jobid: 0
+    reason: Input files updated by another job: results/pm25/2021/exceedance_days.csv, results/pm25/2024/exceedance_days.csv, results/report_task4.md
+    resources: tmpdir=/tmp
+Shell command: None
+[Fri Feb 13 21:20:36 2026]
+Finished jobid: 0 (Rule: all)
+4 of 4 steps (100%) done
+Complete log(s): /home/ania/Desktop/Projekt3_ZTP/.snakemake/log/2026-02-13T212031.779119.snakemake.log

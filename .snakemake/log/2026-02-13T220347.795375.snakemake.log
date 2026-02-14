@@ -1,0 +1,3 @@
+SyntaxError in file "/home/ania/Desktop/Projekt3_ZTP/Snakefile", line 96:
+invalid syntax. Perhaps you forgot a comma?:
+				journals = "results/literature/{year}/top_journals.csv"

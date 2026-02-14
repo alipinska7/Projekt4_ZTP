@@ -1,0 +1,130 @@
+Assuming unrestricted shared filesystem usage.
+host: student-workstation
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                 count
+----------------  -------
+all                     1
+analyze_pm25            2
+clean_pm25_year         1
+download_pm25           1
+plot_pm25_yearly        2
+pubmed_year             1
+report_task4            1
+total                   9
+
+Select jobs to execute...
+Execute 1 jobs...
+[Sat Feb 14 12:38:03 2026]
+localrule pubmed_year:
+    input: src/literature/pubmed_fetch.py
+    output: results/literature/2019/pubmed_papers.csv, results/literature/2019/summary_by_year.csv, results/literature/2019/top_journals.csv
+    jobid: 7
+    reason: Missing output files: results/literature/2019/pubmed_papers.csv
+    wildcards: year=2019
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Sat Feb 14 12:38:07 2026]
+Finished jobid: 7 (Rule: pubmed_year)
+1 of 9 steps (11%) done
+Execute 1 jobs...
+[Sat Feb 14 12:38:07 2026]
+localrule download_pm25:
+    output: data/raw/pm25_2019.pkl
+    jobid: 3
+    reason: Missing output files: data/raw/pm25_2019.pkl
+    wildcards: year=2019
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Sat Feb 14 12:39:04 2026]
+Finished jobid: 3 (Rule: download_pm25)
+2 of 9 steps (22%) done
+Execute 1 jobs...
+[Sat Feb 14 12:39:04 2026]
+localrule clean_pm25_year:
+    input: data/raw/pm25_2019.pkl, src/czyszczenie_danych.py
+    output: data/processed/pm25_2019_cleaned.pkl
+    jobid: 2
+    reason: Missing output files: data/processed/pm25_2019_cleaned.pkl; Input files updated by another job: data/raw/pm25_2019.pkl
+    wildcards: year=2019
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Sat Feb 14 12:39:11 2026]
+Finished jobid: 2 (Rule: clean_pm25_year)
+3 of 9 steps (33%) done
+Execute 1 jobs...
+[Sat Feb 14 12:39:11 2026]
+localrule analyze_pm25:
+    input: data/processed/pm25_2024_cleaned.pkl, src/obliczenia.py, config/task4.yaml
+    output: results/pm25/2024/exceedance_days.csv, results/pm25/2024/daily_means.csv
+    jobid: 4
+    reason: Updated input files: config/task4.yaml
+    wildcards: year=2024
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Sat Feb 14 12:39:14 2026]
+Finished jobid: 4 (Rule: analyze_pm25)
+4 of 9 steps (44%) done
+Execute 1 jobs...
+[Sat Feb 14 12:39:14 2026]
+localrule plot_pm25_yearly:
+    input: results/pm25/2024/exceedance_days.csv, results/pm25/2024/daily_means.csv
+    output: results/pm25/2024/figures/ranking_przekroczen.png, results/pm25/2024/figures/monthly_heatmap.png
+    jobid: 10
+    reason: Input files updated by another job: results/pm25/2024/exceedance_days.csv, results/pm25/2024/daily_means.csv
+    wildcards: year=2024
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Sat Feb 14 12:39:16 2026]
+Finished jobid: 10 (Rule: plot_pm25_yearly)
+5 of 9 steps (56%) done
+Execute 1 jobs...
+[Sat Feb 14 12:39:16 2026]
+localrule analyze_pm25:
+    input: data/processed/pm25_2019_cleaned.pkl, src/obliczenia.py, config/task4.yaml
+    output: results/pm25/2019/exceedance_days.csv, results/pm25/2019/daily_means.csv
+    jobid: 1
+    reason: Missing output files: results/pm25/2019/exceedance_days.csv, results/pm25/2019/daily_means.csv; Updated input files: config/task4.yaml; Input files updated by another job: data/processed/pm25_2019_cleaned.pkl
+    wildcards: year=2019
+    resources: tmpdir=/tmp
+[Sat Feb 14 12:39:18 2026]
+Finished jobid: 1 (Rule: analyze_pm25)
+6 of 9 steps (67%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Sat Feb 14 12:39:18 2026]
+localrule plot_pm25_yearly:
+    input: results/pm25/2019/exceedance_days.csv, results/pm25/2019/daily_means.csv
+    output: results/pm25/2019/figures/ranking_przekroczen.png, results/pm25/2019/figures/monthly_heatmap.png
+    jobid: 9
+    reason: Missing output files: results/pm25/2019/figures/ranking_przekroczen.png, results/pm25/2019/figures/monthly_heatmap.png; Input files updated by another job: results/pm25/2019/exceedance_days.csv, results/pm25/2019/daily_means.csv
+    wildcards: year=2019
+    resources: tmpdir=/tmp
+[Sat Feb 14 12:39:18 2026]
+localrule report_task4:
+    input: results/pm25/2019/exceedance_days.csv, results/pm25/2024/exceedance_days.csv, results/literature/2019/pubmed_papers.csv, results/literature/2024/pubmed_papers.csv
+    output: results/report_task4.md
+    jobid: 11
+    reason: Input files updated by another job: results/literature/2019/pubmed_papers.csv, results/pm25/2024/exceedance_days.csv, results/pm25/2019/exceedance_days.csv
+    resources: tmpdir=/tmp
+[Sat Feb 14 12:39:18 2026]
+Finished jobid: 11 (Rule: report_task4)
+7 of 9 steps (78%) done
+[Sat Feb 14 12:39:20 2026]
+Finished jobid: 9 (Rule: plot_pm25_yearly)
+8 of 9 steps (89%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sat Feb 14 12:39:20 2026]
+localrule all:
+    input: results/pm25/2019/exceedance_days.csv, results/pm25/2024/exceedance_days.csv, results/pm25/2019/daily_means.csv, results/pm25/2024/daily_means.csv, results/literature/2019/pubmed_papers.csv, results/literature/2024/pubmed_papers.csv, results/pm25/2019/figures/ranking_przekroczen.png, results/pm25/2024/figures/ranking_przekroczen.png, results/pm25/2019/figures/monthly_heatmap.png, results/pm25/2024/figures/monthly_heatmap.png, results/report_task4.md
+    jobid: 0
+    reason: Input files updated by another job: results/literature/2019/pubmed_papers.csv, results/pm25/2024/exceedance_days.csv, results/report_task4.md, results/pm25/2019/exceedance_days.csv, results/pm25/2024/figures/monthly_heatmap.png, results/pm25/2019/figures/monthly_heatmap.png, results/pm25/2024/figures/ranking_przekroczen.png, results/pm25/2019/daily_means.csv, results/pm25/2024/daily_means.csv, results/pm25/2019/figures/ranking_przekroczen.png
+    resources: tmpdir=/tmp
+[Sat Feb 14 12:39:20 2026]
+Finished jobid: 0 (Rule: all)
+9 of 9 steps (100%) done
+Complete log(s): /home/ania/Desktop/Projekt3_ZTP/.snakemake/log/2026-02-14T123803.400827.snakemake.log

@@ -1,0 +1,51 @@
+Assuming unrestricted shared filesystem usage.
+host: student-workstation
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                 count
+----------------  -------
+all                     1
+plot_pm25_yearly        2
+total                   3
+
+Select jobs to execute...
+Execute 1 jobs...
+[Sat Feb 14 12:20:45 2026]
+localrule plot_pm25_yearly:
+    input: results/pm25/2021/exceedance_days.csv, results/pm25/2021/daily_means.csv
+    output: results/pm25/2021/figures/ranking_przekroczen.png, results/pm25/2021/figures/monthly_heatmap.png
+    jobid: 9
+    reason: Missing output files: results/pm25/2021/figures/monthly_heatmap.png
+    wildcards: year=2021
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Sat Feb 14 12:20:47 2026]
+Finished jobid: 9 (Rule: plot_pm25_yearly)
+1 of 3 steps (33%) done
+Execute 1 jobs...
+[Sat Feb 14 12:20:47 2026]
+localrule plot_pm25_yearly:
+    input: results/pm25/2024/exceedance_days.csv, results/pm25/2024/daily_means.csv
+    output: results/pm25/2024/figures/ranking_przekroczen.png, results/pm25/2024/figures/monthly_heatmap.png
+    jobid: 10
+    reason: Missing output files: results/pm25/2024/figures/ranking_przekroczen.png, results/pm25/2024/figures/monthly_heatmap.png
+    wildcards: year=2024
+    resources: tmpdir=/tmp
+[Sat Feb 14 12:20:50 2026]
+Finished jobid: 10 (Rule: plot_pm25_yearly)
+2 of 3 steps (67%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sat Feb 14 12:20:50 2026]
+localrule all:
+    input: results/pm25/2021/exceedance_days.csv, results/pm25/2024/exceedance_days.csv, results/pm25/2021/daily_means.csv, results/pm25/2024/daily_means.csv, results/literature/2021/pubmed_papers.csv, results/literature/2024/pubmed_papers.csv, results/pm25/2021/figures/ranking_przekroczen.png, results/pm25/2024/figures/ranking_przekroczen.png, results/pm25/2021/figures/monthly_heatmap.png, results/pm25/2024/figures/monthly_heatmap.png, results/report_task4.md
+    jobid: 0
+    reason: Input files updated by another job: results/pm25/2021/figures/ranking_przekroczen.png, results/pm25/2021/figures/monthly_heatmap.png, results/pm25/2024/figures/ranking_przekroczen.png, results/pm25/2024/figures/monthly_heatmap.png
+    resources: tmpdir=/tmp
+[Sat Feb 14 12:20:50 2026]
+Finished jobid: 0 (Rule: all)
+3 of 3 steps (100%) done
+Complete log(s): /home/ania/Desktop/Projekt3_ZTP/.snakemake/log/2026-02-14T122044.760842.snakemake.log

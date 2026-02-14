@@ -1,0 +1,52 @@
+Assuming unrestricted shared filesystem usage.
+host: student-workstation
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+all                 1
+analyze_pm25        2
+pubmed_year         2
+report_task4        1
+total               6
+
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Feb 13 21:04:28 2026]
+localrule analyze_pm25:
+    input: data/processed/pm25_2024_cleaned.pkl
+    output: results/pm25/2024/daily_means.csv, results/pm25/2024/exceedance_days.csv
+    jobid: 4
+    reason: Missing output files: results/pm25/2024/exceedance_days.csv; Params have changed since last execution: Union of exclusive params before and now across all output: before: 'results/analysis/2024' now: 'results/2024' 
+    wildcards: year=2024
+    resources: tmpdir=/tmp
+Shell command: 
+        python src/obliczenia.py             --year 2024             --input_file data/processed/pm25_2024_cleaned.pkl             --output_dir results/2024             --cities Warszawa Katowice
+        
+Select jobs to execute...
+Waiting at most 5 seconds for missing files:
+results/pm25/2024/daily_means.csv (missing locally)
+results/pm25/2024/exceedance_days.csv (missing locally)
+MissingOutputException in rule analyze_pm25 in file "/home/ania/Desktop/Projekt3_ZTP/Snakefile", line 94:
+Job 4  completed successfully, but some output files are missing. Missing files after 5 seconds. This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait:
+results/pm25/2024/daily_means.csv (missing locally, parent dir contents: )
+results/pm25/2024/exceedance_days.csv (missing locally, parent dir contents: )
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Fri Feb 13 21:04:34 2026]
+Error in rule analyze_pm25:
+    message: None
+    jobid: 4
+    input: data/processed/pm25_2024_cleaned.pkl
+    output: results/pm25/2024/daily_means.csv, results/pm25/2024/exceedance_days.csv
+    shell:
+        
+        python src/obliczenia.py             --year 2024             --input_file data/processed/pm25_2024_cleaned.pkl             --output_dir results/2024             --cities Warszawa Katowice
+        
+        (command exited with non-zero exit code)
+Complete log(s): /home/ania/Desktop/Projekt3_ZTP/.snakemake/log/2026-02-13T210428.158807.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

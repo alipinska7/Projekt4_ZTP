@@ -1,0 +1,4 @@
+SyntaxError in file "/home/ania/Desktop/Projekt3_ZTP/Snakefile", line 62:
+invalid syntax:
+#         python src/obliczenia.py \
+

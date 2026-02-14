@@ -1,0 +1,85 @@
+Assuming unrestricted shared filesystem usage.
+host: student-workstation
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                count
+---------------  -------
+all                    1
+analyze_pm25           2
+clean_pm25_year        2
+download_pm25          2
+pubmed_year            2
+report_task4           1
+total                 10
+
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Feb 13 20:59:21 2026]
+localrule pubmed_year:
+    input: src/literature/pubmed_fetch.py, config/task4.yaml
+    output: results/literature/2021/pubmed_papers.csv, results/literature/2021/summary_by_year.csv, results/literature/2021/top_journals.csv
+    jobid: 7
+    reason: Missing output files: results/literature/2021/pubmed_papers.csv
+    wildcards: year=2021
+    resources: tmpdir=/tmp
+Shell command: python src/literature/pubmed_fetch.py --year 2021 --config config/task4.yaml --output_dir results/literature/2021
+Select jobs to execute...
+[Fri Feb 13 20:59:25 2026]
+Finished jobid: 7 (Rule: pubmed_year)
+1 of 10 steps (10%) done
+Execute 1 jobs...
+[Fri Feb 13 20:59:25 2026]
+localrule download_pm25:
+    output: data/raw/pm25_2021.pkl
+    jobid: 3
+    reason: Missing output files: data/raw/pm25_2021.pkl
+    wildcards: year=2021
+    resources: tmpdir=/tmp
+Shell command: python src/wczytywanie.py --year 2021 --output data/raw/pm25_2021.pkl
+Select jobs to execute...
+[Fri Feb 13 21:00:25 2026]
+Finished jobid: 3 (Rule: download_pm25)
+2 of 10 steps (20%) done
+Execute 1 jobs...
+[Fri Feb 13 21:00:25 2026]
+localrule clean_pm25_year:
+    input: data/raw/pm25_2021.pkl, src/czyszczenie_danych.py
+    output: data/processed/pm25_2021_cleaned.pkl
+    jobid: 2
+    reason: Missing output files: data/processed/pm25_2021_cleaned.pkl; Input files updated by another job: data/raw/pm25_2021.pkl
+    wildcards: year=2021
+    resources: tmpdir=/tmp
+Shell command: 
+        python src/czyszczenie_danych.py             --input data/raw/pm25_2021.pkl             --year 2021             --output data/processed/pm25_2021_cleaned.pkl         
+RuleException:
+CalledProcessError in file "/home/ania/Desktop/Projekt3_ZTP/Snakefile", line 32:
+Command 'set -euo pipefail;  
+        python src/czyszczenie_danych.py             --input data/raw/pm25_2021.pkl             --year 2021             --output data/processed/pm25_2021_cleaned.pkl' returned non-zero exit status 2.
+[Fri Feb 13 21:00:25 2026]
+Error in rule clean_pm25_year:
+    message: None
+    jobid: 2
+    input: data/raw/pm25_2021.pkl, src/czyszczenie_danych.py
+    output: data/processed/pm25_2021_cleaned.pkl
+    shell:
+        
+        python src/czyszczenie_danych.py             --input data/raw/pm25_2021.pkl             --year 2021             --output data/processed/pm25_2021_cleaned.pkl         
+        (command exited with non-zero exit code)
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Fri Feb 13 21:00:25 2026]
+Error in rule clean_pm25_year:
+    message: None
+    jobid: 2
+    input: data/raw/pm25_2021.pkl, src/czyszczenie_danych.py
+    output: data/processed/pm25_2021_cleaned.pkl
+    shell:
+        
+        python src/czyszczenie_danych.py             --input data/raw/pm25_2021.pkl             --year 2021             --output data/processed/pm25_2021_cleaned.pkl         
+        (command exited with non-zero exit code)
+Complete log(s): /home/ania/Desktop/Projekt3_ZTP/.snakemake/log/2026-02-13T205921.869068.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

@@ -1,0 +1,99 @@
+Assuming unrestricted shared filesystem usage.
+host: student-workstation
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+all                 1
+analyze_pm25        3
+pubmed_year         3
+report_task4        1
+total               8
+
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Feb 13 22:23:36 2026]
+localrule pubmed_year:
+    input: src/literature/pubmed_fetch.py
+    output: results/literature/2021/pubmed_papers.csv, results/literature/2021/summary_by_year.csv, results/literature/2021/top_journals.csv
+    jobid: 10
+    reason: Forced execution
+    wildcards: year=2021
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Fri Feb 13 22:23:41 2026]
+Finished jobid: 10 (Rule: pubmed_year)
+1 of 8 steps (12%) done
+Execute 1 jobs...
+[Fri Feb 13 22:23:41 2026]
+localrule analyze_pm25:
+    input: data/processed/pm25_2021_cleaned.pkl, src/obliczenia.py, config/task4.yaml
+    output: results/pm25/2021/exceedance_days.csv, results/pm25/2021/daily_means.csv
+    jobid: 1
+    reason: Missing output files: results/pm25/2021/exceedance_days.csv
+    wildcards: year=2021
+    resources: tmpdir=/tmp
+Select jobs to execute...
+Traceback (most recent call last):
+
+  File "/home/ania/venv/lib/python3.12/site-packages/snakemake/executors/local.py", line 231, in spawn_job
+    subprocess.check_call(cmd, shell=True)
+
+  File "/usr/lib/python3.12/subprocess.py", line 413, in check_call
+    raise CalledProcessError(retcode, cmd)
+
+subprocess.CalledProcessError: Command 'cd /home/ania/Desktop/Projekt3_ZTP && /home/ania/venv/bin/python3 -m snakemake --snakefile '/home/ania/Desktop/Projekt3_ZTP/Snakefile' --target-jobs 'analyze_pm25:year=2021' --allowed-rules analyze_pm25 --cores 1 --attempt 1 --force-use-threads  --force --target-files-omit-workdir-adjustment --max-inventory-time 0 --retries 0 --nocolor --no-hooks --nolock --ignore-incomplete --rerun-triggers software-env code input mtime params --conda-frontend 'conda' --shared-fs-usage source-cache software-deployment persistence storage-local-copies sources input-output --wrapper-prefix 'https://github.com/snakemake/snakemake-wrappers/raw/' --latency-wait 5 --scheduler 'ilp' --local-storage-prefix base64//LnNuYWtlbWFrZS9zdG9yYWdl --scheduler-solver-path '/home/ania/venv/bin' --runtime-source-cache-path '/home/ania/.cache/snakemake/snakemake/source-cache/snakemake-runtime-cache/tmpn_3q_ylp' --default-resources base64//dG1wZGlyPXN5c3RlbV90bXBkaXI= --quiet progress rules host --mode 'subprocess' --local-groupid 'local'' returned non-zero exit status 1.
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "/home/ania/venv/lib/python3.12/site-packages/snakemake/executors/local.py", line 236, in cached_or_run
+    self.workflow.async_run(self.acached_or_run(job, run_func, *args))
+
+  File "/home/ania/venv/lib/python3.12/site-packages/snakemake/workflow.py", line 267, in async_run
+    return runner.run(coro)
+           ^^^^^^^^^^^^^^^^
+
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+
+  File "/home/ania/venv/lib/python3.12/site-packages/snakemake/executors/local.py", line 249, in acached_or_run
+    run_func(*args)
+
+  File "/home/ania/venv/lib/python3.12/site-packages/snakemake/executors/local.py", line 233, in spawn_job
+    raise SpawnedJobError()
+
+snakemake.exceptions.SpawnedJobError
+
+[Fri Feb 13 22:23:43 2026]
+Error in rule analyze_pm25:
+    message: None
+    jobid: 1
+    input: data/processed/pm25_2021_cleaned.pkl, src/obliczenia.py, config/task4.yaml
+    output: results/pm25/2021/exceedance_days.csv, results/pm25/2021/daily_means.csv
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Fri Feb 13 22:23:43 2026]
+Error in rule analyze_pm25:
+    message: None
+    jobid: 1
+    input: data/processed/pm25_2021_cleaned.pkl, src/obliczenia.py, config/task4.yaml
+    output: results/pm25/2021/exceedance_days.csv, results/pm25/2021/daily_means.csv
+Complete log(s): /home/ania/Desktop/Projekt3_ZTP/.snakemake/log/2026-02-13T222336.121081.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

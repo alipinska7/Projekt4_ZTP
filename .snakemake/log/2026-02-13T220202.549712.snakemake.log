@@ -1,0 +1,46 @@
+Assuming unrestricted shared filesystem usage.
+host: student-workstation
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+all                 1
+pubmed_year         3
+report_task4        1
+total               5
+
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Feb 13 22:02:02 2026]
+localrule pubmed_year:
+    input: src/literature/pubmed_fetch.py
+    output: results/literature/2010/pubmed_papers.csv, results/literature/2010/summary_by_year.csv, results/literature/2010/top_journals.csv
+    jobid: 12
+    reason: Missing output files: results/literature/2010/pubmed_papers.csv
+    wildcards: year=2010
+    resources: tmpdir=/tmp
+Select jobs to execute...
+Waiting at most 5 seconds for missing files:
+results/literature/2010/summary_by_year.csv (missing locally)
+MissingOutputException in rule pubmed_year in file "/home/ania/Desktop/Projekt3_ZTP/Snakefile", line 87:
+Job 12  completed successfully, but some output files are missing. Missing files after 5 seconds. This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait:
+results/literature/2010/summary_by_year.csv (missing locally, parent dir contents: pubmed_papers.csv, top_journals.csv, query_stats.csv)
+Removing output files of failed job pubmed_year since they might be corrupted:
+results/literature/2010/pubmed_papers.csv, results/literature/2010/top_journals.csv
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Fri Feb 13 22:02:13 2026]
+Error in rule pubmed_year:
+    message: None
+    jobid: 12
+    input: src/literature/pubmed_fetch.py
+    output: results/literature/2010/pubmed_papers.csv, results/literature/2010/summary_by_year.csv, results/literature/2010/top_journals.csv
+    shell:
+        python src/literature/pubmed_fetch.py --year 2010 --config config/task4.yaml --output_dir results/literature/2010
+        (command exited with non-zero exit code)
+Complete log(s): /home/ania/Desktop/Projekt3_ZTP/.snakemake/log/2026-02-13T220202.549712.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

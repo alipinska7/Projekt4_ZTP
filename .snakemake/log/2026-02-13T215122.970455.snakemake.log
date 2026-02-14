@@ -1,0 +1,117 @@
+Assuming unrestricted shared filesystem usage.
+host: student-workstation
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+all                 1
+analyze_pm25        3
+pubmed_year         3
+report_task4        1
+total               8
+
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Feb 13 21:51:23 2026]
+localrule pubmed_year:
+    input: src/literature/pubmed_fetch.py
+    output: results/literature/2021/pubmed_papers.csv, results/literature/2021/summary_by_year.csv, results/literature/2021/top_journals.csv
+    jobid: 10
+    reason: Set of input files has changed since last execution; Code has changed since last execution
+    wildcards: year=2021
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Fri Feb 13 21:51:27 2026]
+Finished jobid: 10 (Rule: pubmed_year)
+1 of 8 steps (12%) done
+Execute 1 jobs...
+[Fri Feb 13 21:51:27 2026]
+localrule analyze_pm25:
+    input: data/processed/pm25_2021_cleaned.pkl, src/obliczenia.py, config/task4.yaml
+    output: results/pm25/2021/exceedance_days.csv, results/pm25/2021/daily_means.csv
+    jobid: 1
+    reason: Code has changed since last execution; Params have changed since last execution: Union of exclusive params before and now across all output: before: <nothing exclusive> now: [] 
+    wildcards: year=2021
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Fri Feb 13 21:51:30 2026]
+Finished jobid: 1 (Rule: analyze_pm25)
+2 of 8 steps (25%) done
+Execute 1 jobs...
+[Fri Feb 13 21:51:30 2026]
+localrule analyze_pm25:
+    input: data/processed/pm25_2010_cleaned.pkl, src/obliczenia.py, config/task4.yaml
+    output: results/pm25/2010/exceedance_days.csv, results/pm25/2010/daily_means.csv
+    jobid: 7
+    reason: Missing output files: results/pm25/2010/exceedance_days.csv; Code has changed since last execution; Params have changed since last execution: Union of exclusive params before and now across all output: before: <nothing exclusive> now: [] 
+    wildcards: year=2010
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Fri Feb 13 21:51:31 2026]
+Finished jobid: 7 (Rule: analyze_pm25)
+3 of 8 steps (38%) done
+Execute 1 jobs...
+[Fri Feb 13 21:51:31 2026]
+localrule analyze_pm25:
+    input: data/processed/pm25_2024_cleaned.pkl, src/obliczenia.py, config/task4.yaml
+    output: results/pm25/2024/exceedance_days.csv, results/pm25/2024/daily_means.csv
+    jobid: 4
+    reason: Code has changed since last execution; Params have changed since last execution: Union of exclusive params before and now across all output: before: <nothing exclusive> now: [] 
+    wildcards: year=2024
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Fri Feb 13 21:51:35 2026]
+Finished jobid: 4 (Rule: analyze_pm25)
+4 of 8 steps (50%) done
+Execute 1 jobs...
+[Fri Feb 13 21:51:35 2026]
+localrule pubmed_year:
+    input: src/literature/pubmed_fetch.py
+    output: results/literature/2024/pubmed_papers.csv, results/literature/2024/summary_by_year.csv, results/literature/2024/top_journals.csv
+    jobid: 11
+    reason: Set of input files has changed since last execution; Code has changed since last execution
+    wildcards: year=2024
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Fri Feb 13 21:51:39 2026]
+Finished jobid: 11 (Rule: pubmed_year)
+5 of 8 steps (62%) done
+Execute 1 jobs...
+[Fri Feb 13 21:51:39 2026]
+localrule pubmed_year:
+    input: src/literature/pubmed_fetch.py
+    output: results/literature/2010/pubmed_papers.csv, results/literature/2010/summary_by_year.csv, results/literature/2010/top_journals.csv
+    jobid: 12
+    reason: Missing output files: results/literature/2010/pubmed_papers.csv; Set of input files has changed since last execution; Code has changed since last execution
+    wildcards: year=2010
+    resources: tmpdir=/tmp
+[Fri Feb 13 21:51:41 2026]
+Finished jobid: 12 (Rule: pubmed_year)
+6 of 8 steps (75%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Feb 13 21:51:41 2026]
+localrule report_task4:
+    input: results/pm25/2021/exceedance_days.csv, results/pm25/2024/exceedance_days.csv, results/pm25/2010/exceedance_days.csv, results/literature/2021/pubmed_papers.csv, results/literature/2024/pubmed_papers.csv, results/literature/2010/pubmed_papers.csv
+    output: results/report_task4.md
+    jobid: 13
+    reason: Input files updated by another job: results/literature/2024/pubmed_papers.csv, results/literature/2010/pubmed_papers.csv, results/pm25/2024/exceedance_days.csv, results/pm25/2010/exceedance_days.csv, results/pm25/2021/exceedance_days.csv, results/literature/2021/pubmed_papers.csv
+    resources: tmpdir=/tmp
+[Fri Feb 13 21:51:42 2026]
+Finished jobid: 13 (Rule: report_task4)
+7 of 8 steps (88%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Feb 13 21:51:42 2026]
+localrule all:
+    input: results/pm25/2021/exceedance_days.csv, results/pm25/2024/exceedance_days.csv, results/pm25/2010/exceedance_days.csv, results/literature/2021/pubmed_papers.csv, results/literature/2024/pubmed_papers.csv, results/literature/2010/pubmed_papers.csv, results/report_task4.md
+    jobid: 0
+    reason: Input files updated by another job: results/report_task4.md, results/literature/2024/pubmed_papers.csv, results/literature/2010/pubmed_papers.csv, results/pm25/2024/exceedance_days.csv, results/pm25/2010/exceedance_days.csv, results/pm25/2021/exceedance_days.csv, results/literature/2021/pubmed_papers.csv
+    resources: tmpdir=/tmp
+[Fri Feb 13 21:51:42 2026]
+Finished jobid: 0 (Rule: all)
+8 of 8 steps (100%) done
+Complete log(s): /home/ania/Desktop/Projekt3_ZTP/.snakemake/log/2026-02-13T215122.970455.snakemake.log

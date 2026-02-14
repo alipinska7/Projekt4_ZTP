@@ -1,0 +1,52 @@
+Assuming unrestricted shared filesystem usage.
+host: student-workstation
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                 count
+----------------  -------
+all                     1
+plot_pm25_yearly        2
+pubmed_year             1
+report_task4            1
+total                   5
+
+Select jobs to execute...
+Execute 1 jobs...
+[Sat Feb 14 11:53:02 2026]
+localrule plot_pm25_yearly:
+    input: results/pm25/2024/exceedance_days.csv, results/pm25/2024/daily_means.csv
+    output: results/pm25/2024/figures/ranking_przekroczen.png, results/pm25/2024/figures/daily_trends.png
+    jobid: 10
+    reason: Missing output files: results/pm25/2024/figures/daily_trends.png, results/pm25/2024/figures/ranking_przekroczen.png; Code has changed since last execution
+    wildcards: year=2024
+    resources: tmpdir=/tmp
+Select jobs to execute...
+RuleException:
+CalledProcessError in file "/home/ania/Desktop/Projekt3_ZTP/Snakefile", line 102:
+Command 'set -euo pipefail;  python src/wykresy_rok.py --input_exc results/pm25/2024/exceedance_days.csv --input_daily results/pm25/2024/daily_means.csv --output_dir results/pm25/2024 --year 2024' returned non-zero exit status 2.
+[Sat Feb 14 11:53:05 2026]
+Error in rule plot_pm25_yearly:
+    message: None
+    jobid: 10
+    input: results/pm25/2024/exceedance_days.csv, results/pm25/2024/daily_means.csv
+    output: results/pm25/2024/figures/ranking_przekroczen.png, results/pm25/2024/figures/daily_trends.png
+    shell:
+        python src/wykresy_rok.py --input_exc results/pm25/2024/exceedance_days.csv --input_daily results/pm25/2024/daily_means.csv --output_dir results/pm25/2024 --year 2024
+        (command exited with non-zero exit code)
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Sat Feb 14 11:53:05 2026]
+Error in rule plot_pm25_yearly:
+    message: None
+    jobid: 10
+    input: results/pm25/2024/exceedance_days.csv, results/pm25/2024/daily_means.csv
+    output: results/pm25/2024/figures/ranking_przekroczen.png, results/pm25/2024/figures/daily_trends.png
+    shell:
+        python src/wykresy_rok.py --input_exc results/pm25/2024/exceedance_days.csv --input_daily results/pm25/2024/daily_means.csv --output_dir results/pm25/2024 --year 2024
+        (command exited with non-zero exit code)
+Complete log(s): /home/ania/Desktop/Projekt3_ZTP/.snakemake/log/2026-02-14T115302.522300.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

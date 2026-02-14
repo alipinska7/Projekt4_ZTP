@@ -1,0 +1,195 @@
+Assuming unrestricted shared filesystem usage.
+host: student-workstation
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                count
+---------------  -------
+all                    1
+analyze_pm25           3
+clean_pm25_year        3
+download_pm25          3
+pubmed_year            3
+report_task4           1
+total                 14
+
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Feb 13 22:43:27 2026]
+localrule download_pm25:
+    output: data/raw/pm25_2021.pkl
+    jobid: 3
+    reason: Missing output files: data/raw/pm25_2021.pkl
+    wildcards: year=2021
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Fri Feb 13 22:44:26 2026]
+Finished jobid: 3 (Rule: download_pm25)
+1 of 14 steps (7%) done
+Execute 1 jobs...
+[Fri Feb 13 22:44:26 2026]
+localrule download_pm25:
+    output: data/raw/pm25_2010.pkl
+    jobid: 9
+    reason: Missing output files: data/raw/pm25_2010.pkl
+    wildcards: year=2010
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Fri Feb 13 22:44:51 2026]
+Finished jobid: 9 (Rule: download_pm25)
+2 of 14 steps (14%) done
+Execute 1 jobs...
+[Fri Feb 13 22:44:51 2026]
+localrule pubmed_year:
+    input: src/literature/pubmed_fetch.py
+    output: results/literature/2021/pubmed_papers.csv, results/literature/2021/summary_by_year.csv, results/literature/2021/top_journals.csv
+    jobid: 10
+    reason: Missing output files: results/literature/2021/pubmed_papers.csv
+    wildcards: year=2021
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Fri Feb 13 22:44:54 2026]
+Finished jobid: 10 (Rule: pubmed_year)
+3 of 14 steps (21%) done
+Execute 1 jobs...
+[Fri Feb 13 22:44:54 2026]
+localrule clean_pm25_year:
+    input: data/raw/pm25_2021.pkl, src/czyszczenie_danych.py
+    output: data/processed/pm25_2021_cleaned.pkl
+    jobid: 2
+    reason: Missing output files: data/processed/pm25_2021_cleaned.pkl; Input files updated by another job: data/raw/pm25_2021.pkl
+    wildcards: year=2021
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Fri Feb 13 22:45:03 2026]
+Finished jobid: 2 (Rule: clean_pm25_year)
+4 of 14 steps (29%) done
+Execute 1 jobs...
+[Fri Feb 13 22:45:03 2026]
+localrule analyze_pm25:
+    input: data/processed/pm25_2021_cleaned.pkl, src/obliczenia.py, config/task4.yaml
+    output: results/pm25/2021/exceedance_days.csv, results/pm25/2021/daily_means.csv
+    jobid: 1
+    reason: Missing output files: results/pm25/2021/exceedance_days.csv; Input files updated by another job: data/processed/pm25_2021_cleaned.pkl; Params have changed since last execution: Union of exclusive params before and now across all output: before: ['Warszawa', 'Krakow', 'Wroclaw'] now: ['Warszawa', 'Katowice'] 
+    wildcards: year=2021
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Fri Feb 13 22:45:05 2026]
+Finished jobid: 1 (Rule: analyze_pm25)
+5 of 14 steps (36%) done
+Execute 1 jobs...
+[Fri Feb 13 22:45:05 2026]
+localrule clean_pm25_year:
+    input: data/raw/pm25_2010.pkl, src/czyszczenie_danych.py
+    output: data/processed/pm25_2010_cleaned.pkl
+    jobid: 8
+    reason: Missing output files: data/processed/pm25_2010_cleaned.pkl; Input files updated by another job: data/raw/pm25_2010.pkl
+    wildcards: year=2010
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Fri Feb 13 22:45:09 2026]
+Finished jobid: 8 (Rule: clean_pm25_year)
+6 of 14 steps (43%) done
+Execute 1 jobs...
+[Fri Feb 13 22:45:09 2026]
+localrule analyze_pm25:
+    input: data/processed/pm25_2010_cleaned.pkl, src/obliczenia.py, config/task4.yaml
+    output: results/pm25/2010/exceedance_days.csv, results/pm25/2010/daily_means.csv
+    jobid: 7
+    reason: Missing output files: results/pm25/2010/exceedance_days.csv; Input files updated by another job: data/processed/pm25_2010_cleaned.pkl; Params have changed since last execution: Union of exclusive params before and now across all output: before: ['Warszawa', 'Krakow', 'Wroclaw'] now: ['Warszawa', 'Katowice'] 
+    wildcards: year=2010
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Fri Feb 13 22:45:10 2026]
+Finished jobid: 7 (Rule: analyze_pm25)
+7 of 14 steps (50%) done
+Execute 1 jobs...
+[Fri Feb 13 22:45:10 2026]
+localrule download_pm25:
+    output: data/raw/pm25_2024.pkl
+    jobid: 6
+    reason: Missing output files: data/raw/pm25_2024.pkl
+    wildcards: year=2024
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Fri Feb 13 22:45:55 2026]
+Finished jobid: 6 (Rule: download_pm25)
+8 of 14 steps (57%) done
+Execute 1 jobs...
+[Fri Feb 13 22:45:55 2026]
+localrule clean_pm25_year:
+    input: data/raw/pm25_2024.pkl, src/czyszczenie_danych.py
+    output: data/processed/pm25_2024_cleaned.pkl
+    jobid: 5
+    reason: Missing output files: data/processed/pm25_2024_cleaned.pkl; Input files updated by another job: data/raw/pm25_2024.pkl
+    wildcards: year=2024
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Fri Feb 13 22:46:04 2026]
+Finished jobid: 5 (Rule: clean_pm25_year)
+9 of 14 steps (64%) done
+Execute 1 jobs...
+[Fri Feb 13 22:46:04 2026]
+localrule analyze_pm25:
+    input: data/processed/pm25_2024_cleaned.pkl, src/obliczenia.py, config/task4.yaml
+    output: results/pm25/2024/exceedance_days.csv, results/pm25/2024/daily_means.csv
+    jobid: 4
+    reason: Missing output files: results/pm25/2024/exceedance_days.csv; Input files updated by another job: data/processed/pm25_2024_cleaned.pkl; Params have changed since last execution: Union of exclusive params before and now across all output: before: ['Warszawa', 'Krakow', 'Wroclaw'] now: ['Warszawa', 'Katowice'] 
+    wildcards: year=2024
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Fri Feb 13 22:46:07 2026]
+Finished jobid: 4 (Rule: analyze_pm25)
+10 of 14 steps (71%) done
+Execute 1 jobs...
+[Fri Feb 13 22:46:07 2026]
+localrule pubmed_year:
+    input: src/literature/pubmed_fetch.py
+    output: results/literature/2024/pubmed_papers.csv, results/literature/2024/summary_by_year.csv, results/literature/2024/top_journals.csv
+    jobid: 11
+    reason: Missing output files: results/literature/2024/pubmed_papers.csv
+    wildcards: year=2024
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Fri Feb 13 22:46:10 2026]
+Finished jobid: 11 (Rule: pubmed_year)
+11 of 14 steps (79%) done
+Execute 1 jobs...
+[Fri Feb 13 22:46:10 2026]
+localrule pubmed_year:
+    input: src/literature/pubmed_fetch.py
+    output: results/literature/2010/pubmed_papers.csv, results/literature/2010/summary_by_year.csv, results/literature/2010/top_journals.csv
+    jobid: 12
+    reason: Missing output files: results/literature/2010/pubmed_papers.csv
+    wildcards: year=2010
+    resources: tmpdir=/tmp
+RuleException:
+CalledProcessError in file "/home/ania/Desktop/Projekt3_ZTP/Snakefile", line 99:
+Command 'set -euo pipefail;  python src/literature/pubmed_fetch.py --year 2010 --config config/task4.yaml --output_dir results/literature/2010' returned non-zero exit status 1.
+[Fri Feb 13 22:46:11 2026]
+Error in rule pubmed_year:
+    message: None
+    jobid: 12
+    input: src/literature/pubmed_fetch.py
+    output: results/literature/2010/pubmed_papers.csv, results/literature/2010/summary_by_year.csv, results/literature/2010/top_journals.csv
+    shell:
+        python src/literature/pubmed_fetch.py --year 2010 --config config/task4.yaml --output_dir results/literature/2010
+        (command exited with non-zero exit code)
+Removing output files of failed job pubmed_year since they might be corrupted:
+results/literature/2010/pubmed_papers.csv, results/literature/2010/summary_by_year.csv
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Fri Feb 13 22:46:11 2026]
+Error in rule pubmed_year:
+    message: None
+    jobid: 12
+    input: src/literature/pubmed_fetch.py
+    output: results/literature/2010/pubmed_papers.csv, results/literature/2010/summary_by_year.csv, results/literature/2010/top_journals.csv
+    shell:
+        python src/literature/pubmed_fetch.py --year 2010 --config config/task4.yaml --output_dir results/literature/2010
+        (command exited with non-zero exit code)
+Complete log(s): /home/ania/Desktop/Projekt3_ZTP/.snakemake/log/2026-02-13T224327.659183.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

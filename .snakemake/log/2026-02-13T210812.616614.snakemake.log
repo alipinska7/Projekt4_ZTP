@@ -1,0 +1,97 @@
+Assuming unrestricted shared filesystem usage.
+host: student-workstation
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job             count
+------------  -------
+all                 1
+analyze_pm25        2
+pubmed_year         2
+report_task4        1
+total               6
+
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Feb 13 21:08:12 2026]
+localrule analyze_pm25:
+    input: data/processed/pm25_2024_cleaned.pkl, src/obliczenia.py, config/task4.yaml
+    output: results/pm25/2024/exceedance_days.csv, results/pm25/2024/daily_means.csv
+    jobid: 4
+    reason: Missing output files: results/pm25/2024/exceedance_days.csv
+    wildcards: year=2024
+    resources: tmpdir=/tmp
+Shell command: None
+Select jobs to execute...
+[Fri Feb 13 21:08:14 2026]
+Finished jobid: 4 (Rule: analyze_pm25)
+1 of 6 steps (17%) done
+Execute 1 jobs...
+[Fri Feb 13 21:08:14 2026]
+localrule analyze_pm25:
+    input: data/processed/pm25_2021_cleaned.pkl, src/obliczenia.py, config/task4.yaml
+    output: results/pm25/2021/exceedance_days.csv, results/pm25/2021/daily_means.csv
+    jobid: 1
+    reason: Missing output files: results/pm25/2021/exceedance_days.csv
+    wildcards: year=2021
+    resources: tmpdir=/tmp
+Shell command: None
+Select jobs to execute...
+[Fri Feb 13 21:08:16 2026]
+Finished jobid: 1 (Rule: analyze_pm25)
+2 of 6 steps (33%) done
+Execute 1 jobs...
+[Fri Feb 13 21:08:16 2026]
+localrule pubmed_year:
+    input: src/literature/pubmed_fetch.py, config/task4.yaml
+    output: results/literature/2021/pubmed_papers.csv, results/literature/2021/summary_by_year.csv, results/literature/2021/top_journals.csv
+    jobid: 7
+    reason: Missing output files: results/literature/2021/pubmed_papers.csv
+    wildcards: year=2021
+    resources: tmpdir=/tmp
+Shell command: python src/literature/pubmed_fetch.py --year 2021 --config config/task4.yaml --output_dir results/literature/2021
+Select jobs to execute...
+[Fri Feb 13 21:08:20 2026]
+Finished jobid: 7 (Rule: pubmed_year)
+3 of 6 steps (50%) done
+Execute 1 jobs...
+[Fri Feb 13 21:08:20 2026]
+localrule pubmed_year:
+    input: src/literature/pubmed_fetch.py, config/task4.yaml
+    output: results/literature/2024/pubmed_papers.csv, results/literature/2024/summary_by_year.csv, results/literature/2024/top_journals.csv
+    jobid: 8
+    reason: Missing output files: results/literature/2024/pubmed_papers.csv
+    wildcards: year=2024
+    resources: tmpdir=/tmp
+Shell command: python src/literature/pubmed_fetch.py --year 2024 --config config/task4.yaml --output_dir results/literature/2024
+[Fri Feb 13 21:08:22 2026]
+Finished jobid: 8 (Rule: pubmed_year)
+4 of 6 steps (67%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Feb 13 21:08:22 2026]
+localrule report_task4:
+    input: results/pm25/2021/exceedance_days.csv, results/pm25/2024/exceedance_days.csv, results/literature/2021/pubmed_papers.csv, results/literature/2024/pubmed_papers.csv
+    output: results/report_task4.md
+    jobid: 9
+    reason: Missing output files: results/report_task4.md; Input files updated by another job: results/literature/2024/pubmed_papers.csv, results/literature/2021/pubmed_papers.csv, results/pm25/2021/exceedance_days.csv, results/pm25/2024/exceedance_days.csv
+    resources: tmpdir=/tmp
+Shell command: python src/generate_report.py --output results/report_task4.md
+[Fri Feb 13 21:08:23 2026]
+Finished jobid: 9 (Rule: report_task4)
+5 of 6 steps (83%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Fri Feb 13 21:08:23 2026]
+localrule all:
+    input: results/pm25/2021/exceedance_days.csv, results/pm25/2024/exceedance_days.csv, results/literature/2021/pubmed_papers.csv, results/literature/2024/pubmed_papers.csv, results/report_task4.md
+    jobid: 0
+    reason: Input files updated by another job: results/pm25/2021/exceedance_days.csv, results/literature/2021/pubmed_papers.csv, results/report_task4.md, results/pm25/2024/exceedance_days.csv, results/literature/2024/pubmed_papers.csv
+    resources: tmpdir=/tmp
+Shell command: None
+[Fri Feb 13 21:08:23 2026]
+Finished jobid: 0 (Rule: all)
+6 of 6 steps (100%) done
+Complete log(s): /home/ania/Desktop/Projekt3_ZTP/.snakemake/log/2026-02-13T210812.616614.snakemake.log

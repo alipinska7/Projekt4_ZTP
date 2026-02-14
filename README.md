@@ -55,7 +55,7 @@ Weryfikacja odbywa się przez wynik w terminalu:
 
 Sklonuj repozytorium
 
-    git clone 
+    git clone https://github.com/alipinska7/Projekt4_ZTP.git
 
 Utwórz i aktywuj wirtualne środowisko
 

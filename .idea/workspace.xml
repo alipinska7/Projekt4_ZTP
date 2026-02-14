@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0fdf8197-0401-4f3e-8578-42109c3b7512" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/snakemake-settings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projekt1.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Uruchamianie.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/czyszczenie_danych.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metadane.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obliczenia.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wczytywanie.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wykresy.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/czyszczenie_danych.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/czyszczenie_danych.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generate_report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/generate_report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/literature/pubmed_help.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/literature/pubmed_help.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/wykresy_rok.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/wykresy_rok.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

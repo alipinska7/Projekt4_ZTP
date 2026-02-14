@@ -27,8 +27,6 @@ def load_config_data(config_path):
     }
 
 
-
-
 def download_pubmed_data(year, settings):
     Entrez.email = settings['email']
     all_papers = []
@@ -125,7 +123,7 @@ def save_results_to_csv(data_list, year, output_dir):
     top_journals.columns = ['Journal', 'Count']
     top_journals.to_csv(os.path.join(output_dir, "top_journals.csv"), index=False)
 
-    print(f"Sukces! Pliki dla roku {year} zapisane w: {output_dir}")
+    print(f"Pliki dla roku {year} zapisane w: {output_dir}")
 
 
 

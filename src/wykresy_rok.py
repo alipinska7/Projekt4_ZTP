@@ -17,7 +17,7 @@ def generate_yearly_plots(input_csv, output_dir, year):
     df_max = df.groupby('miejscowość', as_index=False)['ilość przekroczeń'].max()
     df_sorted = df_max.sort_values('ilość przekroczeń', ascending=False).head(15)
 
-    # Przygotowanie wykresu
+    # Rysowanie wykresu
     plt.figure(figsize=(10, 8))
     sns.barplot(
         data=df_sorted,

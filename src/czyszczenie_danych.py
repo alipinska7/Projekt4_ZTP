@@ -219,20 +219,20 @@ if __name__ == "__main__":
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
 
-    # 1. Wczytanie danych
-    print(f"Wczytuję dane z: {args.input}")
+    # Wczytanie danych
+    print(f"Wczytywanie danych z: {args.input}")
     df_raw = pd.read_pickle(args.input)
     meta = load_metadane()
 
-    # 2. Przygotowanie danych do analizy
+    # Przygotowanie danych do analizy
     df_cleaned = clear_data(df_raw, args.year)
     df_updated = update_data(df_cleaned, meta)
     df_final = add_place(df_updated, meta)
 
-    # 4. Dodanie kolumny rok
+    # Dodanie kolumny rok
     df_final['rok'] = args.year
 
-    # 5. Zapis plików
+    # Zapis plików
     os.makedirs(os.path.dirname(args.output), exist_ok=True)
     df_final.to_pickle(args.output)
-    print(f"Sukces! Zapisano: {args.output}")
+    print(f"Zapisano: {args.output}")

@@ -6,10 +6,10 @@ from datetime import datetime
 
 def generate_report(output_path):
     report = [f"# Raport Analizy Jakości Powietrza i Literatury\n",
-              f"Wygenerowano: {datetime.now().strftime('%Y-%m-%d %H:%M')}\n"]
+              f"Data powstania raportu: {datetime.now().strftime('%Y-%m-%d %H:%M')}\n"]
 
     # --- PM2.5 ---
-    report.append("## 1. Podsumowanie PM2.5 (Przekroczenia)")
+    report.append("## 1. Podsumowanie PM2.5 - Przekroczenia normy dobowej stężenia)")
     pm25_files = []
 
     for root, dirs, files in os.walk("results/pm25"):
@@ -24,7 +24,7 @@ def generate_report(output_path):
     else:
         report.append("*Brak danych o przekroczeniach PM2.5.*\n")
 
-    # --- LITERATURA ---
+    # Sekcja literatury
     report.append("## 2. Literatura (PubMed)")
     lit_files = []
     for root, dirs, files in os.walk("results/literature"):

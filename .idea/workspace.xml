@@ -5,12 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0fdf8197-0401-4f3e-8578-42109c3b7512" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/czyszczenie_danych.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/czyszczenie_danych.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generate_report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/generate_report.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/literature/pubmed_help.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/literature/pubmed_help.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/wykresy_rok.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/wykresy_rok.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/literature/2019/pubmed_papers.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/literature/2019/summary_by_year.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/literature/2019/top_journals.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/literature/2021/pubmed_papers.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/literature/2021/summary_by_year.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/literature/2021/top_journals.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/literature/2024/pubmed_papers.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/literature/2024/summary_by_year.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/literature/2024/top_journals.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/pm25/2019/daily_means.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/pm25/2019/exceedance_days.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/pm25/2019/figures/monthly_heatmap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/pm25/2019/figures/ranking_przekroczen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/pm25/2021/daily_means.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/pm25/2021/exceedance_days.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/pm25/2021/figures/monthly_heatmap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/pm25/2021/figures/ranking_przekroczen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/pm25/2024/daily_means.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/pm25/2024/exceedance_days.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/pm25/2024/figures/monthly_heatmap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/pm25/2024/figures/ranking_przekroczen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/report_task4.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

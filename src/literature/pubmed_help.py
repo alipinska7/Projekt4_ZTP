@@ -33,11 +33,11 @@ def download_pubmed_data(year, settings):
 
     # Iteracja po zapytaniach
     for query_text in settings['queries']:
-        #cities_part = "(" + " OR ".join(settings['cities']) + ")"
+        cities_part = "(" + " OR ".join(settings['cities']) + ")"
         #linia u góry: wyszukiwanie miast w którychkolwiek polach artykułu
         #(artykuł wcale nie musi dotyczyć zanieczyszczeń w podanych miastach)
-        cities_tagged = [f"{city}[TIAB]" for city in settings['cities']]
-        cities_part = "(" + " OR ".join(cities_tagged) + ")"
+        # cities_tagged = [f"{city}[TIAB]" for city in settings['cities']]
+        # cities_part = "(" + " OR ".join(cities_tagged) + ")"
         full_query = f"({query_text}) AND {cities_part} AND {year}[DP]"
 
         print(f"Pobieranie dla frazy: '{query_text}' w roku {year}...")

@@ -5,28 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0fdf8197-0401-4f3e-8578-42109c3b7512" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/results/literature/2019/pubmed_papers.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/literature/2019/summary_by_year.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/literature/2019/top_journals.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/literature/2021/pubmed_papers.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/literature/2021/summary_by_year.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/literature/2021/top_journals.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/literature/2024/pubmed_papers.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/literature/2024/summary_by_year.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/literature/2024/top_journals.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/pm25/2019/daily_means.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/pm25/2019/exceedance_days.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/pm25/2019/figures/monthly_heatmap.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/pm25/2019/figures/ranking_przekroczen.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/pm25/2021/daily_means.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/pm25/2021/exceedance_days.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/pm25/2021/figures/monthly_heatmap.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/pm25/2021/figures/ranking_przekroczen.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/pm25/2024/daily_means.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/pm25/2024/exceedance_days.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/pm25/2024/figures/monthly_heatmap.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/pm25/2024/figures/ranking_przekroczen.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/report_task4.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/metadata/ZGF0YS9wcm9jZXNzZWQvcG0yNV8yMDE5X2NsZWFuZWQucGts" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/metadata/ZGF0YS9wcm9jZXNzZWQvcG0yNV8yMDE5X2NsZWFuZWQucGts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/metadata/ZGF0YS9wcm9jZXNzZWQvcG0yNV8yMDI0X2NsZWFuZWQucGts" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/metadata/ZGF0YS9wcm9jZXNzZWQvcG0yNV8yMDI0X2NsZWFuZWQucGts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/metadata/ZGF0YS9yYXcvcG0yNV8yMDE5LnBrbA==" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/metadata/ZGF0YS9yYXcvcG0yNV8yMDE5LnBrbA==" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/metadata/ZGF0YS9yYXcvcG0yNV8yMDI0LnBrbA==" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/metadata/ZGF0YS9yYXcvcG0yNV8yMDI0LnBrbA==" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/metadata/cmVzdWx0cy9saXRlcmF0dXJlLzIwMTkvc3VtbWFyeV9ieV95ZWFyLmNzdg==" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/metadata/cmVzdWx0cy9saXRlcmF0dXJlLzIwMTkvc3VtbWFyeV9ieV95ZWFyLmNzdg==" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/metadata/cmVzdWx0cy9saXRlcmF0dXJlLzIwMTkvcHVibWVkX3BhcGVycy5jc3Y=" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/metadata/cmVzdWx0cy9saXRlcmF0dXJlLzIwMTkvcHVibWVkX3BhcGVycy5jc3Y=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/metadata/cmVzdWx0cy9saXRlcmF0dXJlLzIwMTkvdG9wX2pvdXJuYWxzLmNzdg==" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/metadata/cmVzdWx0cy9saXRlcmF0dXJlLzIwMTkvdG9wX2pvdXJuYWxzLmNzdg==" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/metadata/cmVzdWx0cy9saXRlcmF0dXJlLzIwMjQvc3VtbWFyeV9ieV95ZWFyLmNzdg==" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/metadata/cmVzdWx0cy9saXRlcmF0dXJlLzIwMjQvc3VtbWFyeV9ieV95ZWFyLmNzdg==" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/metadata/cmVzdWx0cy9saXRlcmF0dXJlLzIwMjQvcHVibWVkX3BhcGVycy5jc3Y=" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/metadata/cmVzdWx0cy9saXRlcmF0dXJlLzIwMjQvcHVibWVkX3BhcGVycy5jc3Y=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/metadata/cmVzdWx0cy9saXRlcmF0dXJlLzIwMjQvdG9wX2pvdXJuYWxzLmNzdg==" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/metadata/cmVzdWx0cy9saXRlcmF0dXJlLzIwMjQvdG9wX2pvdXJuYWxzLmNzdg==" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/metadata/cmVzdWx0cy9wbTI1LzIwMTkvZGFpbHlfbWVhbnMuY3N2" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/metadata/cmVzdWx0cy9wbTI1LzIwMTkvZGFpbHlfbWVhbnMuY3N2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/metadata/cmVzdWx0cy9wbTI1LzIwMTkvZXhjZWVkYW5jZV9kYXlzLmNzdg==" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/metadata/cmVzdWx0cy9wbTI1LzIwMTkvZXhjZWVkYW5jZV9kYXlzLmNzdg==" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/metadata/cmVzdWx0cy9wbTI1LzIwMTkvZmlndXJlcy9tb250aGx5X2hlYXRtYXAucG5n" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/metadata/cmVzdWx0cy9wbTI1LzIwMTkvZmlndXJlcy9tb250aGx5X2hlYXRtYXAucG5n" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/metadata/cmVzdWx0cy9wbTI1LzIwMjQvZGFpbHlfbWVhbnMuY3N2" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/metadata/cmVzdWx0cy9wbTI1LzIwMjQvZGFpbHlfbWVhbnMuY3N2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/metadata/cmVzdWx0cy9wbTI1LzIwMjQvZXhjZWVkYW5jZV9kYXlzLmNzdg==" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/metadata/cmVzdWx0cy9wbTI1LzIwMjQvZXhjZWVkYW5jZV9kYXlzLmNzdg==" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/metadata/cmVzdWx0cy9wbTI1LzIwMjQvZmlndXJlcy9tb250aGx5X2hlYXRtYXAucG5n" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/metadata/cmVzdWx0cy9wbTI1LzIwMjQvZmlndXJlcy9tb250aGx5X2hlYXRtYXAucG5n" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.snakemake/metadata/cmVzdWx0cy9yZXBvcnRfdGFzazQubWQ=" beforeDir="false" afterPath="$PROJECT_DIR$/.snakemake/metadata/cmVzdWx0cy9yZXBvcnRfdGFzazQubWQ=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/literature/pubmed_help.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/literature/pubmed_help.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

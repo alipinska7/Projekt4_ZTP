@@ -42,7 +42,6 @@ rule analyze_pm25:
     input:
         data = "data/processed/pm25_{year}_cleaned.pkl",
         script = "src/obliczenia.py",
-        config = "config/task4.yaml"
     output:
         exceedance = "results/pm25/{year}/exceedance_days.csv",
         daily = "results/pm25/{year}/daily_means.csv",

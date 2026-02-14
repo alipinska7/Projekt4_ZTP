@@ -1,0 +1,77 @@
+Assuming unrestricted shared filesystem usage.
+host: student-workstation
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                 count
+----------------  -------
+all                     1
+analyze_pm25            1
+plot_pm25_yearly        1
+pubmed_year             1
+report_task4            1
+total                   5
+
+Select jobs to execute...
+Execute 1 jobs...
+[Sat Feb 14 16:13:23 2026]
+localrule pubmed_year:
+    input: src/literature/pubmed_fetch.py
+    output: results/literature/2021/pubmed_papers.csv, results/literature/2021/summary_by_year.csv, results/literature/2021/top_journals.csv
+    jobid: 7
+    reason: Missing output files: results/literature/2021/pubmed_papers.csv
+    wildcards: year=2021
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Sat Feb 14 16:13:28 2026]
+Finished jobid: 7 (Rule: pubmed_year)
+1 of 5 steps (20%) done
+Execute 1 jobs...
+[Sat Feb 14 16:13:28 2026]
+localrule analyze_pm25:
+    input: data/processed/pm25_2021_cleaned.pkl, src/obliczenia.py
+    output: results/pm25/2021/exceedance_days.csv, results/pm25/2021/daily_means.csv
+    jobid: 1
+    reason: Missing output files: results/pm25/2021/daily_means.csv, results/pm25/2021/exceedance_days.csv
+    wildcards: year=2021
+    resources: tmpdir=/tmp
+[Sat Feb 14 16:13:30 2026]
+Finished jobid: 1 (Rule: analyze_pm25)
+2 of 5 steps (40%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Sat Feb 14 16:13:30 2026]
+localrule report_task4:
+    input: results/pm25/2021/exceedance_days.csv, results/pm25/2024/exceedance_days.csv, results/literature/2021/pubmed_papers.csv, results/literature/2024/pubmed_papers.csv
+    output: results/report_task4.md
+    jobid: 11
+    reason: Input files updated by another job: results/literature/2021/pubmed_papers.csv, results/pm25/2021/exceedance_days.csv
+    resources: tmpdir=/tmp
+[Sat Feb 14 16:13:30 2026]
+localrule plot_pm25_yearly:
+    input: results/pm25/2021/exceedance_days.csv, results/pm25/2021/daily_means.csv
+    output: results/pm25/2021/figures/top_exceedances.png, results/pm25/2021/figures/monthly_heatmap.png
+    jobid: 9
+    reason: Missing output files: results/pm25/2021/figures/top_exceedances.png, results/pm25/2021/figures/monthly_heatmap.png; Input files updated by another job: results/pm25/2021/daily_means.csv, results/pm25/2021/exceedance_days.csv
+    wildcards: year=2021
+    resources: tmpdir=/tmp
+[Sat Feb 14 16:13:30 2026]
+Finished jobid: 11 (Rule: report_task4)
+3 of 5 steps (60%) done
+[Sat Feb 14 16:13:32 2026]
+Finished jobid: 9 (Rule: plot_pm25_yearly)
+4 of 5 steps (80%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sat Feb 14 16:13:32 2026]
+localrule all:
+    input: results/pm25/2021/exceedance_days.csv, results/pm25/2024/exceedance_days.csv, results/pm25/2021/daily_means.csv, results/pm25/2024/daily_means.csv, results/literature/2021/pubmed_papers.csv, results/literature/2024/pubmed_papers.csv, results/pm25/2021/figures/top_exceedances.png, results/pm25/2024/figures/top_exceedances.png, results/pm25/2021/figures/monthly_heatmap.png, results/pm25/2024/figures/monthly_heatmap.png, results/report_task4.md
+    jobid: 0
+    reason: Input files updated by another job: results/pm25/2021/daily_means.csv, results/pm25/2021/figures/monthly_heatmap.png, results/literature/2021/pubmed_papers.csv, results/pm25/2021/exceedance_days.csv, results/report_task4.md, results/pm25/2021/figures/top_exceedances.png
+    resources: tmpdir=/tmp
+[Sat Feb 14 16:13:32 2026]
+Finished jobid: 0 (Rule: all)
+5 of 5 steps (100%) done
+Complete log(s): /home/ania/Desktop/Projekt4_ZTP/.snakemake/log/2026-02-14T161323.482777.snakemake.log

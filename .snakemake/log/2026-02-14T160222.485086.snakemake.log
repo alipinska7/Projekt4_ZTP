@@ -1,0 +1,168 @@
+Assuming unrestricted shared filesystem usage.
+host: student-workstation
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                 count
+----------------  -------
+all                     1
+analyze_pm25            2
+clean_pm25_year         2
+download_pm25           2
+plot_pm25_yearly        2
+pubmed_year             2
+report_task4            1
+total                  12
+
+Select jobs to execute...
+Execute 1 jobs...
+[Sat Feb 14 16:02:22 2026]
+localrule pubmed_year:
+    input: src/literature/pubmed_fetch.py
+    output: results/literature/2019/pubmed_papers.csv, results/literature/2019/summary_by_year.csv, results/literature/2019/top_journals.csv
+    jobid: 7
+    reason: Missing output files: results/literature/2019/pubmed_papers.csv
+    wildcards: year=2019
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Sat Feb 14 16:02:26 2026]
+Finished jobid: 7 (Rule: pubmed_year)
+1 of 12 steps (8%) done
+Execute 1 jobs...
+[Sat Feb 14 16:02:26 2026]
+localrule download_pm25:
+    output: data/raw/pm25_2019.pkl
+    jobid: 3
+    reason: Missing output files: data/raw/pm25_2019.pkl
+    wildcards: year=2019
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Sat Feb 14 16:04:03 2026]
+Finished jobid: 3 (Rule: download_pm25)
+2 of 12 steps (17%) done
+Execute 1 jobs...
+[Sat Feb 14 16:04:03 2026]
+localrule clean_pm25_year:
+    input: data/raw/pm25_2019.pkl, src/czyszczenie_danych.py
+    output: data/processed/pm25_2019_cleaned.pkl
+    jobid: 2
+    reason: Missing output files: data/processed/pm25_2019_cleaned.pkl; Input files updated by another job: data/raw/pm25_2019.pkl
+    wildcards: year=2019
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Sat Feb 14 16:04:10 2026]
+Finished jobid: 2 (Rule: clean_pm25_year)
+3 of 12 steps (25%) done
+Execute 1 jobs...
+[Sat Feb 14 16:04:10 2026]
+localrule analyze_pm25:
+    input: data/processed/pm25_2019_cleaned.pkl, src/obliczenia.py, config/task4.yaml
+    output: results/pm25/2019/exceedance_days.csv, results/pm25/2019/daily_means.csv
+    jobid: 1
+    reason: Missing output files: results/pm25/2019/daily_means.csv, results/pm25/2019/exceedance_days.csv; Input files updated by another job: data/processed/pm25_2019_cleaned.pkl
+    wildcards: year=2019
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Sat Feb 14 16:04:12 2026]
+Finished jobid: 1 (Rule: analyze_pm25)
+4 of 12 steps (33%) done
+Execute 1 jobs...
+[Sat Feb 14 16:04:12 2026]
+localrule plot_pm25_yearly:
+    input: results/pm25/2019/exceedance_days.csv, results/pm25/2019/daily_means.csv
+    output: results/pm25/2019/figures/top_exceedances.png, results/pm25/2019/figures/monthly_heatmap.png
+    jobid: 9
+    reason: Missing output files: results/pm25/2019/figures/monthly_heatmap.png, results/pm25/2019/figures/top_exceedances.png; Input files updated by another job: results/pm25/2019/daily_means.csv, results/pm25/2019/exceedance_days.csv
+    wildcards: year=2019
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Sat Feb 14 16:04:15 2026]
+Finished jobid: 9 (Rule: plot_pm25_yearly)
+5 of 12 steps (42%) done
+Execute 1 jobs...
+[Sat Feb 14 16:04:15 2026]
+localrule pubmed_year:
+    input: src/literature/pubmed_fetch.py
+    output: results/literature/2024/pubmed_papers.csv, results/literature/2024/summary_by_year.csv, results/literature/2024/top_journals.csv
+    jobid: 8
+    reason: Missing output files: results/literature/2024/pubmed_papers.csv
+    wildcards: year=2024
+    resources: tmpdir=/tmp
+Select jobs to execute...
+[Sat Feb 14 16:04:19 2026]
+Finished jobid: 8 (Rule: pubmed_year)
+6 of 12 steps (50%) done
+Execute 1 jobs...
+[Sat Feb 14 16:04:19 2026]
+localrule download_pm25:
+    output: data/raw/pm25_2024.pkl
+    jobid: 6
+    reason: Missing output files: data/raw/pm25_2024.pkl
+    wildcards: year=2024
+    resources: tmpdir=/tmp
+[Sat Feb 14 16:05:26 2026]
+Finished jobid: 6 (Rule: download_pm25)
+7 of 12 steps (58%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sat Feb 14 16:05:26 2026]
+localrule clean_pm25_year:
+    input: data/raw/pm25_2024.pkl, src/czyszczenie_danych.py
+    output: data/processed/pm25_2024_cleaned.pkl
+    jobid: 5
+    reason: Missing output files: data/processed/pm25_2024_cleaned.pkl; Input files updated by another job: data/raw/pm25_2024.pkl
+    wildcards: year=2024
+    resources: tmpdir=/tmp
+[Sat Feb 14 16:05:36 2026]
+Finished jobid: 5 (Rule: clean_pm25_year)
+8 of 12 steps (67%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sat Feb 14 16:05:36 2026]
+localrule analyze_pm25:
+    input: data/processed/pm25_2024_cleaned.pkl, src/obliczenia.py, config/task4.yaml
+    output: results/pm25/2024/exceedance_days.csv, results/pm25/2024/daily_means.csv
+    jobid: 4
+    reason: Missing output files: results/pm25/2024/exceedance_days.csv, results/pm25/2024/daily_means.csv; Input files updated by another job: data/processed/pm25_2024_cleaned.pkl
+    wildcards: year=2024
+    resources: tmpdir=/tmp
+[Sat Feb 14 16:05:38 2026]
+Finished jobid: 4 (Rule: analyze_pm25)
+9 of 12 steps (75%) done
+Select jobs to execute...
+Execute 2 jobs...
+[Sat Feb 14 16:05:38 2026]
+localrule plot_pm25_yearly:
+    input: results/pm25/2024/exceedance_days.csv, results/pm25/2024/daily_means.csv
+    output: results/pm25/2024/figures/top_exceedances.png, results/pm25/2024/figures/monthly_heatmap.png
+    jobid: 10
+    reason: Missing output files: results/pm25/2024/figures/top_exceedances.png, results/pm25/2024/figures/monthly_heatmap.png; Input files updated by another job: results/pm25/2024/exceedance_days.csv, results/pm25/2024/daily_means.csv
+    wildcards: year=2024
+    resources: tmpdir=/tmp
+[Sat Feb 14 16:05:38 2026]
+localrule report_task4:
+    input: results/pm25/2019/exceedance_days.csv, results/pm25/2024/exceedance_days.csv, results/literature/2019/pubmed_papers.csv, results/literature/2024/pubmed_papers.csv
+    output: results/report_task4.md
+    jobid: 11
+    reason: Missing output files: results/report_task4.md; Input files updated by another job: results/pm25/2024/exceedance_days.csv, results/pm25/2019/exceedance_days.csv, results/literature/2024/pubmed_papers.csv, results/literature/2019/pubmed_papers.csv
+    resources: tmpdir=/tmp
+[Sat Feb 14 16:05:38 2026]
+Finished jobid: 11 (Rule: report_task4)
+10 of 12 steps (83%) done
+[Sat Feb 14 16:05:40 2026]
+Finished jobid: 10 (Rule: plot_pm25_yearly)
+11 of 12 steps (92%) done
+Select jobs to execute...
+Execute 1 jobs...
+[Sat Feb 14 16:05:40 2026]
+localrule all:
+    input: results/pm25/2019/exceedance_days.csv, results/pm25/2024/exceedance_days.csv, results/pm25/2019/daily_means.csv, results/pm25/2024/daily_means.csv, results/literature/2019/pubmed_papers.csv, results/literature/2024/pubmed_papers.csv, results/pm25/2019/figures/top_exceedances.png, results/pm25/2024/figures/top_exceedances.png, results/pm25/2019/figures/monthly_heatmap.png, results/pm25/2024/figures/monthly_heatmap.png, results/report_task4.md
+    jobid: 0
+    reason: Input files updated by another job: results/pm25/2024/figures/monthly_heatmap.png, results/pm25/2019/exceedance_days.csv, results/pm25/2024/exceedance_days.csv, results/pm25/2024/figures/top_exceedances.png, results/report_task4.md, results/pm25/2024/daily_means.csv, results/literature/2019/pubmed_papers.csv, results/literature/2024/pubmed_papers.csv, results/pm25/2019/daily_means.csv, results/pm25/2019/figures/monthly_heatmap.png, results/pm25/2019/figures/top_exceedances.png
+    resources: tmpdir=/tmp
+[Sat Feb 14 16:05:40 2026]
+Finished jobid: 0 (Rule: all)
+12 of 12 steps (100%) done
+Complete log(s): /home/ania/Desktop/Projekt4_ZTP/.snakemake/log/2026-02-14T160222.485086.snakemake.log

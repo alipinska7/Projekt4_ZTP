@@ -105,7 +105,7 @@ def load_metadane():
     """
     url = "https://powietrze.gios.gov.pl/pjp/archives/downloadFile/622"
     df = pd.read_excel(url, engine='openpyxl')
-    print(df.head())
+
     return df
 
 #awaryjne: na wypadek, gdyby nie działała strona
